@@ -17,7 +17,7 @@ import 'package:ecommerce_app/src/features/home_app_bar/shopping_cart_icon.dart'
 /// - Orders button
 /// - Account or Sign-in button
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const HomeAppBar({Key? key}) : super(key: key);
+  const HomeAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         title: Text('My Shop'.hardcoded),
         actions: [
           const ShoppingCartIcon(),
-          if (user != null) ...[
+          ...[
             ActionTextButton(
               key: MoreMenuButton.ordersKey,
               text: 'Orders'.hardcoded,
@@ -65,19 +65,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
             ),
-          ] else
-            ActionTextButton(
-              key: MoreMenuButton.signInKey,
-              text: 'Sign In'.hardcoded,
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  fullscreenDialog: true,
-                  builder: (_) => const EmailPasswordSignInScreen(
-                    formType: EmailPasswordSignInFormType.signIn,
-                  ),
-                ),
-              ),
-            )
+          ]
         ],
       );
     }
